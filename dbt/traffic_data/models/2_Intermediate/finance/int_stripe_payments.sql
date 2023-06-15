@@ -1,4 +1,4 @@
--- stripe__payments.sql
+{{ config(materialzied='table')}}
 stg_stripe_payments as (
 
     select * from {{ ref('stg_stripe__payments') }}

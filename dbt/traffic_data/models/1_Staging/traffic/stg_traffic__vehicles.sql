@@ -1,4 +1,4 @@
-{{ config(materialized='view') }}
+
 with stg_vehicles as (
     
     type,

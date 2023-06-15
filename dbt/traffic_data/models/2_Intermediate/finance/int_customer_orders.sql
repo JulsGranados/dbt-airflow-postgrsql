@@ -1,3 +1,4 @@
+{{ config(materialzied='table')}}
 stg_orders as (
 
     select * from {{ ref('stg_jaffle_shop__orders') }}

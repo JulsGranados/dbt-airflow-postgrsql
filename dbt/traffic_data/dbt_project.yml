@@ -33,6 +33,19 @@ clean-targets:         # directories to be removed by `dbt clean`
 # using the `{{ config(...) }}` macro.
 models:
   traffic_data:
+    1_staging:
+      +materialized: view
+    2_intermediate:
+      +materialized: ephemeral
+    3_marts:
+      +materialized: table
+      finance:
+        +schema: finance
+      auto:
+        +schema: auto
     # Config indicated by + and applies to all files under models/example/
     example:
       +materialized: view
+      
+
+

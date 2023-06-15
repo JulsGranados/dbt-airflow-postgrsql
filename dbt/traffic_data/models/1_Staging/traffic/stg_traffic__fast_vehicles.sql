@@ -1,4 +1,4 @@
-{{ config(materialized='view') }}
+
 with stg_fast_vehicles as (
     
     SELECT *
