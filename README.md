@@ -34,32 +34,7 @@ ___
 #   after this you can find airflow webserver at localhost:8080
 #  you can either manually trig tasks or you can turn dags on to start scheduled tasks
 ```
-## Redash Setup
 
-First cd to redash directory 
-```
-cd redash
-```
-## Create an environment file here
-`.env` Shoud contain the following
-```bash
-REDASH_HOST=http://localhost/redash
-PYTHONUNBUFFERED=0
-REDASH_LOG_LEVEL=INFO
-REDASH_REDIS_URL=redis://redis:6379/0
-POSTGRES_PASSWORD=password
-REDASH_COOKIE_SECRET=redash-selfhosted
-REDASH_SECRET_KEY=redash-selfhosted
-REDASH_DATABASE_URL={postgresql+psycopg2://username:password@host/dbname}
-```
-Then run 
-
-```bash
-docker-compose run --rm server create_db 
-docker-compose up -d
-
-# your redash dashboard should be running on port 5000
-```
 
 Please, find the deployed dbt warehouse documentation from [here](https://data-engineering-dwh.netlify.app/#!/overview)
 
