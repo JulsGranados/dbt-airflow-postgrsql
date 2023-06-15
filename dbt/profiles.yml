@@ -35,7 +35,7 @@ traffic_data:
       user: airflow
       pass: airflow
       dbname: postgres
-      schema: public
+      schema: dw
 
     prod:
       type: postgres
@@ -45,6 +45,6 @@ traffic_data:
       user: postgres
       pass: root
       dbname: traffic_data
-      schema: public
+      schema: dw
 
   target: dev
