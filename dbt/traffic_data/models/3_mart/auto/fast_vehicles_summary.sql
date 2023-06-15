@@ -1,6 +1,4 @@
-{{ config(materialzied='view')}}
-
-with fast_v as (select * from {{ref('fast_vehicles')}})
+with fast_v as (select * from {{ref('int_fast_vehicles_top')}})
 
 SELECT 
 type as "Vehicle type",

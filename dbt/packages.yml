@@ -1,0 +1,14 @@
+packages:
+  - package: dbt-labs/snowplow
+    version: 0.7.0
+
+  - git: "https://github.com/dbt-labs/dbt-utils.git"
+    revision: 0.9.2
+
+  #- local: /opt/dbt/redshift
+  # use this format when accessing your repository via a github application token
+  #- git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+  # use this format when accessing your repository via a classical personal access token
+  #- git: "https://{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL
+  # use this format when accessing your repository via a fine-grained personal access token (username sometimes required)
+  #- git: "https://GITHUB_USERNAME:{{env_var('DBT_ENV_SECRET_GIT_CREDENTIAL')}}@github.com/dbt-labs/awesome_repo.git" # git HTTPS URL

@@ -1,4 +1,8 @@
-{{ config(materialized='view') }}
+with timely as (
+
+    select * from {{ ref('stg_traffic__timely')}}
+
+),
 
 with timely_summary as (
     SELECT 
@@ -6,7 +10,7 @@ with timely_summary as (
     Round(AVG(Cast(speed as numeric)),2) as "speed",
     Round(AVG(Cast(lat_acc as numeric)),2) as "lat_acc",
     Round(AVG(Cast(lon_acc as numeric)),2) as "lon_acc"
-    from vehicles
+    from timely
     GROUP BY "time"
 )
 
