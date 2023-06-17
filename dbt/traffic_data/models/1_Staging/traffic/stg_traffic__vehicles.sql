@@ -1,6 +1,7 @@
 
 with stg_vehicles as (
     
+    select
     type,
     traveled_d,
     avg_speed

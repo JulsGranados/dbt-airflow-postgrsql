@@ -1,8 +1,6 @@
 {%- set payment_methods = ['bank_transfer','credit_card','coupon','gift_card'] -%}
  
-with 
-
-payments as (
+with payments as (
 
    select * from {{ ref('stg_stripe__payments') }}
 
@@ -11,12 +9,12 @@ payments as (
 pivot_and_aggregate_payments_to_order_grain as (
    
    select
-      order_id,     
+      orderid,     
       {% for payment_method in payment_methods -%}
  
          sum(
             case
-               when payment_method = '{{ payment_method }}' and
+               when paymentmethod = '{{ payment_method }}' and
                     status = 'success' 
                then amount 
                else 0 

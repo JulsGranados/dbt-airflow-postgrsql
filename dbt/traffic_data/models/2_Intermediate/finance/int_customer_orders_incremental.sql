@@ -1,19 +1,20 @@
 {{
     config(
         materialized='incremental',
-        unique_key='USER_ID'
+        unique_key="customer_id",
+        incremental_strategy="delete+insert"
     )
 }}
-stg_orders as (
+with stg_orders as (
 
     select * from {{ ref('stg_jaffle_shop__orders') }}
 
-),
+)
 
 select * from stg_orders
 
 {% if is_incremental() %}
 
 where
-  "ORDER_DATE" >= (select dateadd(day, -3, max("ORDER_DATE")::date) from {{this}})
+  order_date >= (select (max(order_date))::date -3 from {{this}})
 {% endif %}

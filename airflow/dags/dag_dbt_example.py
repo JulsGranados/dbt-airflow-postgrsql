@@ -32,17 +32,17 @@ with DAG(
     
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir .. ",
+        bash_command=f"cd ../../opt/dbt/traffic_data && dbt run",
     )
 
     dbt_test = BashOperator(
         task_id="dbt_test",
-        bash_command=f"dbt test --project-dir {DBT_PROJECT_DIR} --profiles-dir ..",
+        bash_command=f"cd ../../opt/dbt/traffic_data && dbt test",
     )
 
     dbt_doc_generate = BashOperator(
         task_id="dbt_doc_gen", 
-        bash_command=f"dbt docs generate --project-dir {DBT_PROJECT_DIR} --profiles-dir .. ",
+        bash_command=f"cd ../../opt/dbt/traffic_data && dbt docs generate",
 
     )
 

@@ -4,7 +4,7 @@ with stg_vehicles as (
 
 ),
 
-with summary as (
+summary as (
   
     SELECT 
     type as "Vehicle type",

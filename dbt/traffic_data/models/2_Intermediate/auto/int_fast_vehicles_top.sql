@@ -4,7 +4,7 @@ with vehicles as (
 
 ),
 
-with fast_vehicles as (
+fast_vehicles as (
     SELECT *
     from vehicles 
     ORDER BY avg_speed DESC

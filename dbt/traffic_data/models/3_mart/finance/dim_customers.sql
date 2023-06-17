@@ -13,16 +13,16 @@ customer_orders as (
 final as (
 
     select
-        customers."CUSTOMER_ID",
-        customers."FIRST_NAME",
-        customers."LAST_NAME",
-        customer_orders."FIRST_ORDER_DATE",
-        customer_orders."MOST_RECENT_ORDER_DATE",
-        coalesce(customer_orders."NUMBER_OF_ORDERS", 0) as "NUMBER_OF_ORDERS"
+        customers.customer_id,
+        customers.first_name,
+        customers.last_name,
+        customer_orders.first_order_date,
+        customer_orders.most_recent_order_date,
+        coalesce(customer_orders.num_of_orders, 0) as "NUMBER_OF_ORDERS"
 
     from customers
 
-    left join customer_orders using ("CUSTOMER_ID")
+    left join customer_orders using (customer_id)
 
 )
 

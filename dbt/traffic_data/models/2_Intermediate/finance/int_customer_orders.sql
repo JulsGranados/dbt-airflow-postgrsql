@@ -1,17 +1,17 @@
 {{ config(materialzied='table')}}
-stg_orders as (
+with stg_orders as (
 
     select * from {{ ref('stg_jaffle_shop__orders') }}
 
 ),
 
-with customer_orders as (
+ customer_orders as (
   
 select 
-"CUSTOMER_ID",
-min("ORDER_DATE") as "FIRST_ORDER_DATE",
-max("ORDER_DATE") as "MOST_RECENT_ORDER_DATE",
-count("ORDER_ID") as "NUMBER_OF_ORDERS"
+    customer_id as customer_id,
+    min(order_date) as first_order_date,
+    max(order_date) as most_recent_order_date,
+    count(order_id) as num_of_orders
 from stg_orders
 group by 1
   

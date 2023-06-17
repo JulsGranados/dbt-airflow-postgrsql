@@ -1,10 +1,9 @@
 {{ config(materialzied='table')}}
-stg_stripe_payments as (
+with stg_stripe_payments as (
 
     select * from {{ ref('stg_stripe__payments') }}
 
 ),
-
 renamed as (
 
     select
@@ -15,14 +14,14 @@ renamed as (
         -- strings
         paymentmethod as payment_method,
         case
-            when payment_method in ('stripe', 'paypal', 'credit_card', 'gift_card') then 'credit'
+            when paymentmethod in ('stripe', 'paypal', 'credit_card', 'gift_card') then 'credit'
             else 'cash'
         end as payment_type,
         status,
 
         -- numerics
         amount as amount_cents,
-        amount / 100.0 as amount,
+        amount/ 100.0 as amount,
         
         -- booleans
         case
@@ -31,10 +30,10 @@ renamed as (
         end as is_completed_payment,
 
         -- dates
-        date_trunc('day', created) as created_date,
+        created::date as created_date,
 
         -- timestamps
-        created::timestamp_ltz as created_at
+       created::timestamp as created_at
 
     from stg_stripe_payments
 

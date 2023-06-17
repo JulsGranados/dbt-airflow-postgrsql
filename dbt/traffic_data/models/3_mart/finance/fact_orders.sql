@@ -12,7 +12,7 @@ order_payments as (
 
 ),
 
-orders_and_order_payments_joined as (
+orders_payments_joined as (
 
     select
         orders.order_id,
@@ -23,8 +23,8 @@ orders_and_order_payments_joined as (
 
     from orders
 
-    left join order_payments on orders.order_id = order_payments.order_id
+    left join order_payments on orders.order_id = order_payments.orderid
 
 )
 
-select * from orders_and_payments_joined
+select * from orders_payments_joined

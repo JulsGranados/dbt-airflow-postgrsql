@@ -36,7 +36,7 @@ models:
     1_staging:
       +materialized: view
     2_intermediate:
-      +materialized: ephemeral
+      +materialized: view
     3_marts:
       +materialized: table
       finance:

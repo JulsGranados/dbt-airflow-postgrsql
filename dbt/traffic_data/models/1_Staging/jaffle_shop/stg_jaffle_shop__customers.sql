@@ -1,7 +1,7 @@
 
 with customers as (
     
-    SELECT "ID" AS "CUSTOMER_ID", "FIRST_NAME", "LAST_NAME"
+    SELECT "ID" AS customer_id , "FIRST_NAME" as first_name, "LAST_NAME" as last_name
     FROM jaffle_shop_customers
 )
 

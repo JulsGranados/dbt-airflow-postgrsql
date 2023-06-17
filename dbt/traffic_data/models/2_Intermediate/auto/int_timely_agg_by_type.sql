@@ -4,7 +4,7 @@ with timely as (
 
 ),
 
-with timely_summary as (
+timely_summary as (
     SELECT 
     time,
     Round(AVG(Cast(speed as numeric)),2) as "speed",
