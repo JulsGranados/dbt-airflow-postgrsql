@@ -27,15 +27,13 @@ with DAG(
     catchup=False,
     default_args=default_args, 
 ) as dag:
-    
     dbt_run_staging = BashOperator(
         task_id="dbt_run_staging",
          bash_command=f"cd ../../opt/dbt/traffic_data && dbt run --select 1_Staging ",
-    )
-
+    ) 
     dbt_run_intermediate = BashOperator(
         task_id="dbt_run_intermediate",
-         bash_command=f"cd ../../opt/dbt/traffic_data && dbt run --select 2_Intermediate ",
+         bash_command=f"cd ../../opt/dbt/traffic_data && dbt run --select 2_Intermediate",
     )
 
     dbt_run_mart = BashOperator(

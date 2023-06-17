@@ -6,6 +6,22 @@ name: 'traffic_data'
 version: '2.0.0'
 # config-version: 2
 
+seeds:
+  traffic_data:
+    +enabled: true
+    +schema: seed_data
+    # This configures seeds/country_codes.csv
+    country_codes:
+      # Override column types
+      +column_types:
+        zoom: integer
+        country_code: name(50)
+        abbreviation: varchar(50)
+
+vars:
+  # The `start_date` variable will be accessible in all resources
+  start_date_not_overwrite: '2016-06-01'
+
 # This setting configures which "profile" dbt uses for this project.
 profile: 'traffic_data'
 
