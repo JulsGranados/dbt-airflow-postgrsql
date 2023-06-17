@@ -1,21 +1,16 @@
 -- base_jaffle_shop__customers.sql
 
-with
+with custo as (
 
-source as (
-
-    select * from {{ source('jaffle_shop','customers') }}
+    select * from jaffle_shop_customers
 
 ),
 
 customers as (
 
     select
-        id as customer_id,
-        first_name,
-        last_name
-
-    from source
+        "ID" as customer_id,"FIRST_NAME", "LAST_NAME"
+    from custo
 
 )
 

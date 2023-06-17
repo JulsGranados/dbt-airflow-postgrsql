@@ -41,7 +41,7 @@ default_args = {
 }
 
 with DAG(
-    dag_id='extractor_jaffle',
+    dag_id='dag_data_extract_jaffle_loader',
     default_args=default_args,
     description='this loads our data to the database',
     start_date=datetime(2022,9,20,3),

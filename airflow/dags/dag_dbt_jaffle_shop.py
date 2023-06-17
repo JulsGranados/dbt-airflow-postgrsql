@@ -22,7 +22,7 @@ default_args = {
 }    
 
 with DAG(
-    "jaffle_dbt_dag",
+    "dag_dbt_jaffle_shop",
     start_date=datetime(2022, 9, 20),
     description="DAG that invokes dbt runs",
     schedule_interval=None,

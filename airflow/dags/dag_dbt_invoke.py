@@ -1,5 +1,3 @@
-
-
 from datetime import datetime
 from datetime import timedelta
 
@@ -14,7 +12,7 @@ DBT_PROFILE_DIR = "../../opt/dbt/"
 default_args = {
     'owner': 'airflow',
     'depends_on_past': False,
-    'email': ['natnaelmasresha@gmail.com'],
+    'email': ['julio@gmail.com'],
     'email_on_failure': True,
     'email_on_retry': False,
     'retries': 0,
@@ -22,7 +20,7 @@ default_args = {
 }    
 
 with DAG(
-    "Traffic_dbt_dag",
+    "dag_dbt_invoke",
     start_date=datetime(2022, 9, 20),
     description="DAG that invokes dbt runs",
     schedule_interval=None,
@@ -32,19 +30,5 @@ with DAG(
     
     dbt_run = BashOperator(
         task_id="dbt_run",
-        bash_command=f"dbt run --project-dir {DBT_PROJECT_DIR} --profiles-dir .. ",
+         bash_command=f"cd ../../opt/dbt/traffic_data && dbt run --select 1_Staging.base ",
     )
-
-    dbt_test = BashOperator(
-        task_id="dbt_test",
-        bash_command=f"dbt test --project-dir {DBT_PROJECT_DIR} --profiles-dir ..",
-    )
-
-    dbt_doc_generate = BashOperator(
-        task_id="dbt_doc_gen", 
-        bash_command=f"dbt docs generate --project-dir {DBT_PROJECT_DIR} --profiles-dir .. ",
-
-    )
-
-
-dbt_run >> dbt_test >> dbt_doc_generate

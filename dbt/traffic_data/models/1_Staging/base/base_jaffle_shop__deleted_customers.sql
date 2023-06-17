@@ -4,17 +4,14 @@ with
 
 source as (
 
-    select * from {{ source('jaffle_shop','customer_deletes') }}
+     select * from jaffle_shop_customers
 
 ),
 
 deleted_customers as (
 
-    select
-        id as customer_id,
-        deleted as deleted_at
-
-    from source
+    SELECT "ID" as customer_id , current_date as deleted_at 
+    FROM source
 
 )
 

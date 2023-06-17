@@ -1,0 +1,15 @@
+
+version: 2
+
+models:
+  - name: base
+    description: "Query fast vehicles"
+    
+  - name: jaffle_shop
+    description: "A summary of vehicles by distance and speed"
+  
+  - name: stripe
+    description: "A summary of vehicles by distance and speed"
+
+  - name: traffic
+    description: "A summary of vehicles by speed"
