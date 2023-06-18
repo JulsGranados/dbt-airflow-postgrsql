@@ -2,7 +2,7 @@
 with stg_vehicles as (
     
     select
-    type,
+    TRIM(type) as type,
     traveled_d,
     avg_speed
     from trajectories 

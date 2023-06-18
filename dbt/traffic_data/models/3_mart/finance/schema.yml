@@ -1,0 +1,57 @@
+version: 2
+
+models:
+  - name: dim_customers
+    description: dimension of customer
+    columns:
+      - name: customer_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: first_name
+        description: first name
+        tests:
+          - not_null
+      - name: last_name
+        description: last name
+        tests:
+          - not_null
+      - name: number_of_orders
+        description: NUMBER_OF_ORDERS
+        tests:
+          - positive_value
+      
+
+  - name: fact_orders
+    description: fact order
+    columns:
+      - name: order_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: customer_id
+        description: customer key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customers')
+              field: customer_id
+              config:
+                severity: error
+                error_if: ">10"
+                warn_if: ">1"
+      - name: order_date
+        description: date of the order
+        tests:
+          - not_null
+      - name: amount
+        description: amount
+        tests:
+          - positive_value
+      - name: gift_card_amount
+        description: amount gif
+        tests:
+          - positive_value
+      

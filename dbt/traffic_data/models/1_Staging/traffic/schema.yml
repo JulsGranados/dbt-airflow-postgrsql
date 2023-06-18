@@ -1,0 +1,43 @@
+version: 2
+
+models:
+  - name: stg_traffic__fast_vehicles
+    description: This model get the fast vehicles
+    columns:
+      - name: track_id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: type
+        description: vehicle type
+        tests:
+          - accepted_values:
+              values: ['Car', 'Medium Vehicle', 'Motorcycle']
+      - name: traveled_d
+        description: distance travel
+        tests:
+          - not_null
+      - name: avg_speed
+        description: average speed
+        tests:
+          - not_null
+  - name: stg_traffic__vehicles
+    description: all vehicles
+    columns:
+      - name: type
+        description: vehicle type
+        tests:
+          - accepted_values:
+              values: ['Car', 'Medium Vehicle', 'Motorcycle']
+      - name: traveled_d
+        description: distance travel
+        tests:
+          - not_null
+      - name: avg_speed
+        description: average speed
+        tests:
+          - not_null
+
+
+   

@@ -1,0 +1,25 @@
+version: 2
+
+models:
+  - name: stg_stripe__payments
+    description: This model cleans up payments
+    columns:
+      - name: id
+        description: Primary key
+        tests:
+          - unique
+          - not_null
+      - name: paymentmethod
+        description: payment method
+        tests:
+          - accepted_values:
+              values: ['coupon', 'credit_card', 'bank_transfer', 'gift_card']
+      - name: status
+        description: status
+        tests:
+          - accepted_values:
+              values: ['fail', 'success']
+      - name: amount
+        description: amount of payment
+        tests:
+          - not_null
